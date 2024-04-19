@@ -7,15 +7,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class FizzBuzzGameImplTest {
 
+    private FizzBuzzGame fizzBuzzGame;
+
+    @BeforeEach
+    void setUp() {
+        fizzBuzzGame = new FizzBuzzGameImpl();
+    }
+
     @Test
     @DisplayName("3의 입력을 받은 피즈버즈 게임의 정답은 Fizz")
     void answerForThreeIsFizz() throws Exception {
-        // given - 상황 만들기
-        int input = 3;
-        FizzBuzzGame fizzBuzzGame = new FizzBuzzGameImpl();
-
         // when - 동작
-        String answer = fizzBuzzGame.playGame(input);
+        String answer = fizzBuzzGame.playGame(3);
 
         // then - 검증
         assertEquals("Fizz", answer);
@@ -24,12 +27,8 @@ class FizzBuzzGameImplTest {
     @Test
     @DisplayName("5의 입력을 받은 피즈버즈 게임의 정답은 Buzz")
     void answerForFiveIsBuzz() throws Exception {
-        // given - 상황 만들기
-        int input = 5;
-        FizzBuzzGame fizzBuzzGame = new FizzBuzzGameImpl();
-
         // when - 동작
-        String answer = fizzBuzzGame.playGame(input);
+        String answer = fizzBuzzGame.playGame(5);
 
         // then - 검증
         assertEquals("Buzz", answer);
@@ -38,26 +37,20 @@ class FizzBuzzGameImplTest {
     @Test
     @DisplayName("15 가 입력된 피즈버즈 게임의 정답은 FizzBuzz")
     void answerForFifthteenIsFizzBuzz() throws Exception {
-        // given - 상황 만들기
-        int input = 15;
-        FizzBuzzGame fizzBuzzGame = new FizzBuzzGameImpl();
-
         // when - 동작
-        String answer = fizzBuzzGame.playGame(input);
+        String answer = fizzBuzzGame.playGame(15);
 
         // then - 검증
         assertEquals("FizzBuzz", answer);
     }
 
+    //=== 경계값 ===//
+
     @Test
     @DisplayName("3과 5의 배수가 아닌 자연수의 정답은 'Fail'")
     void answerForNonThreeAndFiveMultipleFailsTheGame() throws Exception {
-        // given - 상황 만들기
-        int input = 2;
-        FizzBuzzGame fizzBuzzGame = new FizzBuzzGameImpl();
-
         // when - 동작
-        String answer = fizzBuzzGame.playGame(input);
+        String answer = fizzBuzzGame.playGame(2);
 
         // then - 검증
         assertEquals("Fail", answer);
@@ -66,12 +59,8 @@ class FizzBuzzGameImplTest {
     @Test
     @DisplayName("0의 피즈버즈 게임의 정답은 'Fail'")
     void answerForZeroFailsTheGame() throws Exception {
-        // given - 상황 만들기
-        int input = 0;
-        FizzBuzzGame fizzBuzzGame = new FizzBuzzGameImpl();
-
         // when - 동작
-        String answer = fizzBuzzGame.playGame(input);
+        String answer = fizzBuzzGame.playGame(0);
 
         // then - 검증
         assertEquals("Fail", answer);
@@ -80,12 +69,8 @@ class FizzBuzzGameImplTest {
     @Test
     @DisplayName("음수의 피즈버즈 게임의 정답은 'Fail'")
     void answerForNegativeFailsTheGame() throws Exception {
-        // given - 상황 만들기
-        int input = -1;
-        FizzBuzzGame fizzBuzzGame = new FizzBuzzGameImpl();
-
         // when - 동작
-        String answer = fizzBuzzGame.playGame(input);
+        String answer = fizzBuzzGame.playGame(-1);
 
         // then - 검증
         assertEquals("Fail", answer);
