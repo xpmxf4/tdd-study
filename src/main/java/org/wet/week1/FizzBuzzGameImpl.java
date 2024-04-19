@@ -15,4 +15,10 @@ public class FizzBuzzGameImpl implements FizzBuzzGame {
 
         return sb.toString();
     }
+
+    @Override
+    public String playGame(int number, String[] expects) {
+
+        return null;
+    }
 }
