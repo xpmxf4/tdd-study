@@ -23,15 +23,27 @@ public class FizzBuzzGameImpl implements FizzBuzzGame {
 
     @Override
     public String playGame(int number, String[] expects) {
+        if (!isNumberPositive(number))
+            return "Fails";
 
-        return null;
+        StringBuilder sb = new StringBuilder();
+        int resultNum = number * generateRanNum();
+        if (resultNum % 3 == 0) sb.append("Fizz");
+        if (resultNum % 5 == 0) sb.append("Buzz");
+
+        for (String expect : expects) {
+            if (expect.equals(sb.toString()))
+                return "Congratulations";
+        }
+
+        return "Loose!";
     }
 
     public boolean isNumberPositive(int number) {
-        return true;
+        return number > 0;
     }
 
     public int generateRanNum() {
-        return -1;
+        return random.nextInt(9) + 1;
     }
 }
