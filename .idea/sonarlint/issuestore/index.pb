@@ -20,3 +20,5 @@ e
 	README.md,8/e/8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 U
 %src/main/java/org/wet/week1/README.md,2/b/2b94491238357fe1489808e11e31e61130321aa6
+U
+%src/main/java/org/wet/week1/User.java,e/d/edbb7831489653367ddf2c96f1bcaea6f21b0347
