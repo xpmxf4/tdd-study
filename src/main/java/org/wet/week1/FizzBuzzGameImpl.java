@@ -13,13 +13,13 @@ public class FizzBuzzGameImpl implements FizzBuzzGame {
 
         StringBuilder sb = new StringBuilder();
 
-        if (number % 3 == 0) sb.append("Fizz");
-        if (number % 5 == 0) sb.append("Buzz");
+        isNumberMultiple(number, sb);
 
         if (sb.length() == 0) sb.append("Fail");
 
         return sb.toString();
     }
+
 
     @Override
     public String playGame(int number, String[] expects) {
@@ -28,11 +28,10 @@ public class FizzBuzzGameImpl implements FizzBuzzGame {
 
         StringBuilder sb = new StringBuilder();
         int resultNum = number * generateRanNum();
-        if (resultNum % 3 == 0) sb.append("Fizz");
-        if (resultNum % 5 == 0) sb.append("Buzz");
+        isNumberMultiple(resultNum, sb);
 
         for (String expect : expects) {
-            if (expect.equals(sb.toString()))
+            if (expect.contentEquals(sb))
                 return "Congratulations";
         }
 
@@ -45,5 +44,10 @@ public class FizzBuzzGameImpl implements FizzBuzzGame {
 
     public int generateRanNum() {
         return random.nextInt(9) + 1;
+    }
+
+    private static void isNumberMultiple(int number, StringBuilder sb) {
+        if (number % 3 == 0) sb.append("Fizz");
+        if (number % 5 == 0) sb.append("Buzz");
     }
 }
