@@ -1,6 +1,11 @@
 package org.wet.week1;
 
+import java.util.*;
+
 public class FizzBuzzGameImpl implements FizzBuzzGame {
+
+    Random random = new Random();
+
     @Override
     public String playGame(int number) {
         if (number < 1)
@@ -20,5 +25,13 @@ public class FizzBuzzGameImpl implements FizzBuzzGame {
     public String playGame(int number, String[] expects) {
 
         return null;
+    }
+
+    public boolean isNumberPositive(int number) {
+        return true;
+    }
+
+    public int generateRanNum() {
+        return -1;
     }
 }

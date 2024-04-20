@@ -4,4 +4,6 @@ public interface FizzBuzzGame {
     String playGame(int number);
 
     String playGame(int number, String[] expects);
+
+    boolean isNumberPositive(int number);
 }

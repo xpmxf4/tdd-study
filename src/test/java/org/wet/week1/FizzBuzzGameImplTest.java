@@ -2,7 +2,12 @@ package org.wet.week1;
 
 import org.junit.jupiter.api.*;
 
+import java.lang.reflect.*;
+import java.util.*;
+
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.when;
 
 
 class FizzBuzzGameImplTest {
@@ -44,6 +49,40 @@ class FizzBuzzGameImplTest {
         assertEquals("FizzBuzz", answer);
     }
 
+    @Test
+    @DisplayName("유저가 정답을 맞추면, 시스템은 유저에게'Congratulations'를 보여준다")
+    void whenCorrectResultIsCongratulations() throws Exception {
+        // given - 상황 만들기
+        Random mockRandom = mock(Random.class);
+
+        // when - 동작
+        when(mockRandom.nextInt(9)).thenReturn(2, 6);
+        Field field = FizzBuzzGameImpl.class.getDeclaredField("random");
+        field.setAccessible(true);
+        field.set(fizzBuzzGame, mockRandom);
+        String result = fizzBuzzGame.playGame(3, new String[]{"Fizz", "FizzBUzz"});
+
+        // then - 검증
+        assertEquals("Congratulations", result);
+    }
+
+    @Test
+    @DisplayName("유저가 정답을 맞추지 못하면, 시스템은 유저에게 'Loose!' 를 보여준다")
+    void whenIncorrectResultIsLoose() throws Exception {
+        // given - 상황 만들기
+        Random mockRandom = mock(Random.class);
+
+        // when - 동작
+        when(mockRandom.nextInt(9)).thenReturn(1, 9);
+        Field field = FizzBuzzGameImpl.class.getDeclaredField("random");
+        field.setAccessible(true);
+        field.set(fizzBuzzGame, mockRandom);
+        String result = fizzBuzzGame.playGame(1, new String[]{"FizzBuzz"});
+
+        // then - 검증
+        assertEquals("Loose!", result);
+    }
+
     //=== 경계값 ===//
 
     @Test
@@ -74,6 +113,18 @@ class FizzBuzzGameImplTest {
 
         // then - 검증
         assertEquals("Fail", answer);
+    }
+
+    @Test
+    @DisplayName("0 이하의 숫자가 들어오면 게임 진행이 안된다.")
+    void isNegativeAndZeroGetCaught() throws Exception {
+        // when - 동작
+        boolean negativeRes = fizzBuzzGame.isNumberPositive(-1);
+        boolean zeroRes = fizzBuzzGame.isNumberPositive(0);
+
+        // then - 검증
+        assertFalse(negativeRes);
+        assertFalse(zeroRes);
     }
 
 }
