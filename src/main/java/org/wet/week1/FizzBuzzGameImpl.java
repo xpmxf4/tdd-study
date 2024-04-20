@@ -20,7 +20,6 @@ public class FizzBuzzGameImpl implements FizzBuzzGame {
         return sb.toString();
     }
 
-
     @Override
     public String playGame(int number, String[] expects) {
         if (!isNumberPositive(number))
@@ -38,16 +37,20 @@ public class FizzBuzzGameImpl implements FizzBuzzGame {
         return "Loose!";
     }
 
-    public boolean isNumberPositive(int number) {
+    boolean isNumberPositive(int number) {
         return number > 0;
     }
 
-    public int generateRanNum() {
+    private int generateRanNum() {
         return random.nextInt(9) + 1;
     }
 
-    private static void isNumberMultiple(int number, StringBuilder sb) {
+    private void isNumberMultiple(int number, StringBuilder sb) {
         if (number % 3 == 0) sb.append("Fizz");
         if (number % 5 == 0) sb.append("Buzz");
+    }
+
+    boolean isInvalidUser(User user) {
+        return user.isPermanentlyBanned();
     }
 }

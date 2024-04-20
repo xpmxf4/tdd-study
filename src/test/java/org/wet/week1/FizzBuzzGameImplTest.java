@@ -12,7 +12,7 @@ import static org.mockito.Mockito.when;
 
 class FizzBuzzGameImplTest {
 
-    private FizzBuzzGame fizzBuzzGame;
+    private FizzBuzzGameImpl fizzBuzzGame;
 
     @BeforeEach
     void setUp() {
@@ -83,11 +83,22 @@ class FizzBuzzGameImplTest {
         assertEquals("Loose!", result);
     }
 
+//    @Test
+//    @DisplayName("영구정지된 유저는 게임을 시작할 수 없다")
+//    void checkWhetherIfUserIsInvalid() throws Exception {
+//
+//        // when - 동작
+//        boolean isUserInvalid = fizzBuzzGame.isInvalidUser(user);
+//
+//        // then - 검증
+//        assertTrue(isUserInvalid);
+//    }
+
     //=== 경계값 ===//
 
     @Test
     @DisplayName("3과 5의 배수가 아닌 자연수의 정답은 'Fail'")
-    void answerForNonThreeAndFiveMultipleFailsTheGame() throws Exception {
+    void answerForNonThreeAndFiveMultipleFailsTheGame() {
         // when - 동작
         String answer = fizzBuzzGame.playGame(2);
 
@@ -97,7 +108,7 @@ class FizzBuzzGameImplTest {
 
     @Test
     @DisplayName("0의 피즈버즈 게임의 정답은 'Fail'")
-    void answerForZeroFailsTheGame() throws Exception {
+    void answerForZeroFailsTheGame() {
         // when - 동작
         String answer = fizzBuzzGame.playGame(0);
 

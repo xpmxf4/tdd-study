@@ -22,3 +22,5 @@ U
 %src/main/java/org/wet/week1/README.md,2/b/2b94491238357fe1489808e11e31e61130321aa6
 U
 %src/main/java/org/wet/week1/User.java,e/d/edbb7831489653367ddf2c96f1bcaea6f21b0347
+U
+%src/main/java/org/wet/week1/Util.java,4/b/4b9e9d04f24492897700dcbc147e22d2fcdcd95d
